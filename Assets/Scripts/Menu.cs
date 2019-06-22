@@ -14,8 +14,8 @@ public class Menu : MonoBehaviour {
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
-    public void startinfinite()
+    public void openCredits()
 	{
-		SceneManager.LoadScene(5);
+		SceneManager.LoadScene(2);
 	}
 }
