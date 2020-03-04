@@ -9,8 +9,6 @@ public class DestructPillar : MonoBehaviour
     public Vector3 offsetVector;
     void Update()
     {
-        offsetVector.y = offset;
-        transform.position -= offsetVector;
         if (pillar.position.y < -8f)
             Destroy(pillar.gameObject);
     }

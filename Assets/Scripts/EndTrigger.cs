@@ -8,6 +8,5 @@ public class EndTrigger : MonoBehaviour
 	public void OnTriggerEnter()
 	{
 		playerMovement.endTrigger = true;
-		gameManager.CompletedLevel();
 	}
 }

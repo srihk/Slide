@@ -2,9 +2,12 @@
 
 public class FollowPlayer : MonoBehaviour {
 
-	public Transform player;
+	Transform player;
 	public Vector3 offset;
 		
+	void Start () {
+		player = GameObject.Find("player").GetComponent<Transform>();
+	}
 
 	// Update is called once per frame
 	void Update () {

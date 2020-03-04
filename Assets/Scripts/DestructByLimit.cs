@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class DestructByLimit : MonoBehaviour {
-	public Rigidbody rb;
+	public float limit = -1f;
 	void FixedUpdate () {
-		if (rb.position.y < -1f)
-			Destroy(rb.gameObject);
+		if (GetComponent<Rigidbody>().position.y < limit)
+			Destroy(gameObject);
 	}
 }

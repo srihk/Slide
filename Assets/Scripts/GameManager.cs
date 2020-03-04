@@ -3,13 +3,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 	bool gameHasEnded = false;
 	float highscore;
-	public float restartDelay = 2f;
+	float restartDelay = 2f;
+	GameObject player;
 
-	public GameObject completeLevelUI;
-	public GameObject player;
-    public void CompletedLevel()
-	{
-		completeLevelUI.SetActive(true);
+	void Start()
+    {
+		player = GameObject.Find("player");
 	}
 
     public void EndGame()
@@ -23,10 +22,13 @@ public class GameManager : MonoBehaviour {
 			gameHasEnded = true;
 			Invoke("Restart", restartDelay);
 		}
-	
 	}
     public void Restart()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+	public void Menu()
+    {
+		SceneManager.LoadScene("Welcome");
 	}
 }

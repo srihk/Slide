@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-	public Rigidbody rb;
+	Rigidbody rb;
 	public bool endTrigger;
-	public float forwardForce = 2000f;
-	public float sidewardForce = 500f;
+	float forwardForce = 2000f;
+	float sidewardForce = 100f;
 	// Use this for initialization
 	void Start () {
-		
+		rb = GameObject.Find("player").GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
