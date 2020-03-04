@@ -19,7 +19,6 @@ public class Menu : MonoBehaviour {
 	}
 	public void openMenu()
     {
-		Debug.Log("Menu Button Pressed!!!");
 		SceneManager.LoadScene(0);
 	}
 }
