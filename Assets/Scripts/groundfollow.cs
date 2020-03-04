@@ -3,15 +3,19 @@
 public class groundfollow : MonoBehaviour
 {
 
-	public GameObject player;
-	public GameObject ground;
+	GameObject player;
 	public float offset;
 	public Vector3 zrev;
+
+	void Start()
+    {
+		player = GameObject.Find("player");
+	}
 
     // Update is called once per frame
     void FixedUpdate()
     {
 		zrev.z = player.transform.position.z + offset;
-		ground.transform.position = zrev;
+		transform.position = zrev;
     }
 }

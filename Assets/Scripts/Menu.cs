@@ -2,7 +2,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Menu : MonoBehaviour {
-	public GameObject completeLevelUI;
 	public Text highScore;
 	float highScoreint;
     public void Start()
@@ -17,5 +16,10 @@ public class Menu : MonoBehaviour {
     public void openCredits()
 	{
 		SceneManager.LoadScene(2);
+	}
+	public void openMenu()
+    {
+		Debug.Log("Menu Button Pressed!!!");
+		SceneManager.LoadScene(0);
 	}
 }

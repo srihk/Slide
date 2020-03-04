@@ -3,9 +3,15 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-	public Transform player;
-	public Text score;
+	Transform player;
+	Text score;
 	// Update is called once per frame
+	void Start()
+    {
+		player = GameObject.Find("player").GetComponent<Transform>();
+		score = GameObject.Find("Score").GetComponent<Text>();
+		score.text = "0";
+	}
 	void Update () {
 		score.text = player.position.z.ToString("0");
 	}
