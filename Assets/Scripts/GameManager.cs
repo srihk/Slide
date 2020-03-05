@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 	}
     public void Restart()
 	{
+		Time.timeScale = 1f;
+		Time.fixedDeltaTime = 0.02f;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	public void Menu()
