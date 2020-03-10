@@ -6,11 +6,13 @@ public class PauseMenu : MonoBehaviour
 {
 
     GameObject pauseMenuUI;
+    static bool gamePaused = false;
 
     public void pauseGame()
     {
-        Time.timeScale = 0.02f;
-        Time.fixedDeltaTime *= 0.02f;
+        gamePaused = true;
+        Time.timeScale = 0.01666667f;
+        Time.fixedDeltaTime *= 0.01666667f;
         pauseMenuUI = GameObject.Find("Canvas");
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(true);
         GameObject.Find("PauseButton").gameObject.SetActive(false);
@@ -18,8 +20,9 @@ public class PauseMenu : MonoBehaviour
 
     public void resumeGame()
     {
+        resetPauseStatus();
         Time.timeScale = 1f;
-        Time.fixedDeltaTime /= 0.02f;
+        Time.fixedDeltaTime /= 0.01666667f;
         pauseMenuUI = GameObject.Find("Canvas");
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(false);
         pauseMenuUI.transform.Find("PauseButton").gameObject.SetActive(true);
@@ -27,15 +30,27 @@ public class PauseMenu : MonoBehaviour
 
     public void openMenu()
     {
+        resetPauseStatus();
         Time.timeScale = 1f;
-        Time.fixedDeltaTime /= 0.02f;
+        Time.fixedDeltaTime /= 0.01666667f;
         SceneManager.LoadScene(0);
     }
 
     public void quitGame()
     {
+        resetPauseStatus();
         Time.timeScale = 1f;
-        Time.fixedDeltaTime /= 0.02f;
+        Time.fixedDeltaTime /= 0.01666667f;
         Application.Quit();
+    }
+
+    public static bool isGamePaused()
+    {
+        return gamePaused;
+    }
+
+    public static void resetPauseStatus()
+    {
+        gamePaused = false;
     }
 }

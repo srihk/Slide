@@ -13,11 +13,16 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		rb.AddForce (0, 0, forwardForce * Time.deltaTime);
-		if (Input.GetKey ("d") || ( Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width / 2)) {
-			rb.AddForce (sidewardForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-		}
-		if (Input.GetKey ("a") || ( Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 2)) {
-			rb.AddForce (-sidewardForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+		if (!PauseMenu.isGamePaused())
+		{
+			if (Input.GetKey("d") || (Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width*2 / 3))
+			{
+				rb.AddForce(sidewardForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+			}
+			if (Input.GetKey("a") || (Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 3))
+			{
+				rb.AddForce(-sidewardForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+			}
 		}
 		if(rb.position.y < -1f && endTrigger == false)
 		{
