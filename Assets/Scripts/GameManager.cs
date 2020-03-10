@@ -3,12 +3,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 	bool gameHasEnded = false;
 	float highscore;
-	float restartDelay = 2f;
+	float restartDelay = 0.06f;
 	GameObject player;
 
 	void Start()
     {
 		player = GameObject.Find("player");
+		Application.targetFrameRate = 60;
 	}
 
     public void EndGame()
@@ -20,13 +21,16 @@ public class GameManager : MonoBehaviour {
 		if (gameHasEnded == false)
 		{
 			gameHasEnded = true;
+			Time.timeScale = 0.01666667f;
+			Time.fixedDeltaTime = 0.0002777f;
 			Invoke("Restart", restartDelay);
 		}
 	}
     public void Restart()
 	{
+		PauseMenu.resetPauseStatus();
 		Time.timeScale = 1f;
-		Time.fixedDeltaTime = 0.02f;
+		Time.fixedDeltaTime = 0.01666667f;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	public void Menu()

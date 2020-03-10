@@ -9,10 +9,10 @@ public class Score : MonoBehaviour {
 	void Start()
     {
 		player = GameObject.Find("player").GetComponent<Transform>();
-		score = GameObject.Find("Score").GetComponent<Text>();
+		score = gameObject.GetComponent<Text>();
 		score.text = "0";
 	}
 	void Update () {
-		score.text = player.position.z.ToString("0");
+		score.text = "SCORE: " + player.position.z.ToString("0");
 	}
 }
