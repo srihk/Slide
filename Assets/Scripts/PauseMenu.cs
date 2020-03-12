@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         resetPauseStatus();
         Time.timeScale = 1f;
-        Time.fixedDeltaTime /= 0.01666667f;
+        Time.fixedDeltaTime = 0.01666667f;
         SceneManager.LoadScene(0);
     }
 
