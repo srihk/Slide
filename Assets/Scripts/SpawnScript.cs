@@ -6,12 +6,11 @@ public class SpawnScript : MonoBehaviour {
 	public GameObject spawnObj;
 	public float spawnMin = 1f;
 	public float spawnMax = 2f;
-	/*public float x_offset1 = -1f;
-	public float x_offset2 = 1f;*/
 	GameObject player;
 	public Vector3 spawnPoint;
 	public float offset;
 	public Quaternion rotation;
+	public float x_offset = 1f;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("player");
@@ -21,10 +20,8 @@ public class SpawnScript : MonoBehaviour {
     void Spawn()
 	{
 		spawnPoint.z = player.transform.position.z + offset;
-		/*rotation.x = Random.Range(x_offset1, x_offset2);
-		rotation.y = Random.Range(x_offset1, x_offset2);
-		rotation.z = Random.Range(x_offset1, x_offset2);
-		rotation.w = Random.Range(x_offset1, x_offset2);*/
+		spawnPoint.x += x_offset;
+		x_offset = -x_offset;
 		Instantiate(spawnObj, spawnPoint, rotation);
 		Invoke("Spawn", Random.Range(spawnMin, spawnMax));
 	}
