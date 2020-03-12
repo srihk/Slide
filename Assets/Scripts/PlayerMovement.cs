@@ -5,12 +5,19 @@ public class PlayerMovement : MonoBehaviour {
 	public bool endTrigger;
 	float forwardForce = 2000f;
 	float sidewardForce = 100f;
+	float speedup_factor = 0.00005f;
 	// Use this for initialization
 	void Start () {
 		rb = GameObject.Find("player").GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
+	void Update ()
+    {
+		if (!PauseMenu.isGamePaused() && Time.timeScale<2)
+			Time.timeScale += speedup_factor;
+    }
+
 	void FixedUpdate () {
 		rb.AddForce (0, 0, forwardForce * Time.deltaTime);
 		if (!PauseMenu.isGamePaused())

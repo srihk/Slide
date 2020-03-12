@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     public void pauseGame()
     {
         gamePaused = true;
-        Time.timeScale = 0.01666667f;
+        Time.timeScale *= 0.01666667f;
         Time.fixedDeltaTime *= 0.01666667f;
         pauseMenuUI = GameObject.Find("Canvas");
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(true);
@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
     public void resumeGame()
     {
         resetPauseStatus();
-        Time.timeScale = 1f;
+        Time.timeScale /= 0.01666667f;
         Time.fixedDeltaTime /= 0.01666667f;
         pauseMenuUI = GameObject.Find("Canvas");
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(false);
