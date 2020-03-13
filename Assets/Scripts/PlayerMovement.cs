@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool endTrigger;
 	float forwardForce = 2000f;
 	float sidewardForce = 100f;
+	static float sensitivity = 0.6f;
 	float speedup_factor = 0.00005f;
 	// Use this for initialization
 	void Start () {
@@ -24,11 +25,11 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			if (Input.GetKey("d") || (Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width*2 / 3))
 			{
-				rb.AddForce(sidewardForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+				rb.AddForce(sidewardForce * sensitivity * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 			}
 			if (Input.GetKey("a") || (Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 3))
 			{
-				rb.AddForce(-sidewardForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+				rb.AddForce(-sidewardForce * sensitivity * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 			}
 		}
 		if(rb.position.y < -1f && endTrigger == false)
@@ -36,4 +37,14 @@ public class PlayerMovement : MonoBehaviour {
 			FindObjectOfType<GameManager>().EndGame();
 		}
 	}
+
+	public static float getSensitivity()
+    {
+		return sensitivity;
+    }
+
+	public static void setSensitivity(float newSensitivity)
+    {
+		sensitivity = newSensitivity;
+    }
 }

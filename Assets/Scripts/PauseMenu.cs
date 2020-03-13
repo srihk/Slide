@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-
-    GameObject pauseMenuUI;
+    Slider sensitivitySlider;
+    GameObject pauseMenuUI; 
     static bool gamePaused = false;
 
     public void pauseGame()
@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI = GameObject.Find("Canvas");
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(true);
         GameObject.Find("PauseButton").gameObject.SetActive(false);
+        sensitivitySlider = GameObject.Find("SensitivitySlider").GetComponent<Slider>();
+        sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity", 0.5f);
     }
 
     public void resumeGame()
@@ -52,5 +54,11 @@ public class PauseMenu : MonoBehaviour
     public static void resetPauseStatus()
     {
         gamePaused = false;
+    }
+
+    public void onSensitivityChanged()
+    {
+        PlayerMovement.setSensitivity(sensitivitySlider.value);
+        PlayerPrefs.SetFloat("Sensitivity", PlayerMovement.getSensitivity());
     }
 }
