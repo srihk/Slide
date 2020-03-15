@@ -30,6 +30,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.transform.Find("PauseButton").gameObject.SetActive(true);
     }
 
+    public void restartLevel()
+    {
+        resetPauseStatus();
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.01666667f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void openMenu()
     {
         resetPauseStatus();
