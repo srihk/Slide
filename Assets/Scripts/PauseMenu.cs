@@ -69,4 +69,11 @@ public class PauseMenu : MonoBehaviour
         PlayerMovement.setSensitivity(sensitivitySlider.value);
         PlayerPrefs.SetFloat("Sensitivity", PlayerMovement.getSensitivity());
     }
+
+    public static void showScoreCard()
+    {
+        GameObject.Find("Canvas").transform.Find("ScoreCard").gameObject.SetActive(true);
+        GameObject.Find("ScoreCard").transform.Find("Score").GetComponent<Text>().text = GameObject.Find("player").transform.position.z.ToString("0");
+        GameObject.Find("Canvas").transform.Find("Score").gameObject.SetActive(false);
+    }
 }

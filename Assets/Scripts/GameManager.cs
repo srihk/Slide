@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 	bool gameHasEnded = false;
 	float highscore;
@@ -23,16 +24,16 @@ public class GameManager : MonoBehaviour {
 			gameHasEnded = true;
 			Time.timeScale = 0.01666667f;
 			Time.fixedDeltaTime = 0.0002777f;
-			Invoke("Restart", restartDelay);
+			GameObject.Find("PauseButton").gameObject.SetActive(false);
+			Invoke("showScoreCard", restartDelay);
 		}
 	}
-    public void Restart()
-	{
-		PauseMenu.resetPauseStatus();
-		Time.timeScale = 1f;
-		Time.fixedDeltaTime = 0.01666667f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+	public void showScoreCard()
+    {
+		PauseMenu.showScoreCard();
 	}
+
 	public void Menu()
     {
 		SceneManager.LoadScene("Welcome");
