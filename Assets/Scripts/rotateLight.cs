@@ -8,7 +8,7 @@ public class rotateLight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotate = Random.Range(-0.2f, 0.2f);
+        rotate = Random.Range(0f, 0.2f);
     }
 
     // Update is called once per frame
