@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GameObject.Find("player").GetComponent<Rigidbody>();
+		setSensitivity(PlayerPrefs.GetFloat("Sensitivity", 0.6f));
 	}
 	
 	// Update is called once per frame
