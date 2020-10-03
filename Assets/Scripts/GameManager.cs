@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 	bool gameHasEnded = false;
+	public bool showFps = false;
 	float highscore;
 	float restartDelay = 0.06f;
 	GameObject player;
@@ -23,7 +24,13 @@ public class GameManager : MonoBehaviour {
 		PauseMenu.showTutorial();
 	}
 
-    public void EndGame()
+	public void showFPS()
+    {
+		showFps = !showFps;
+		GameObject.Find("Canvas").transform.Find("FPSCounter").gameObject.SetActive(showFps);
+	}
+
+	public void EndGame()
 	{
 		if (PlayerPrefs.GetFloat("HighScore", 0) < player.transform.position.z)
 		{
