@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	bool gameHasEnded = false;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour {
 			PlayerPrefs.SetInt("FirstPlay", 0);
 			showTutorial();
         }
+		GameObject.Find("Canvas").transform.Find("FPSCounter").gameObject.SetActive((PlayerPrefs.GetInt("showFPS", 1) == 1));
 	}
 
 	public void showTutorial()
@@ -26,7 +28,8 @@ public class GameManager : MonoBehaviour {
 
 	public void showFPS()
     {
-		showFps = !showFps;
+		showFps = GameObject.Find("showFPSToggle").GetComponent<Toggle>().isOn;
+		PlayerPrefs.SetInt("showFPS", (showFps ? 1 : 0));
 		GameObject.Find("Canvas").transform.Find("FPSCounter").gameObject.SetActive(showFps);
 	}
 
