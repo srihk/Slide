@@ -1,6 +1,6 @@
-# **Rough Drift**
+# **S\ide**
 
-Rough Drift is a downloadable game for Android, Windows, and Linux. An endless runner... drifter game made using Unity3D.
+Slide (stylized as **S\ide**) is a downloadable game for Android, Windows, and Linux. An endless runner... drifter game made using Unity3D.
 
 Red, an endangered cube and our protagonist, must drift his way through an army of disunited walls!
 
@@ -20,7 +20,7 @@ Experience the extremely fast-paced journey of Red in a hyper-casual world of cu
 
 ## Download
 
-[**Download Rough Drift on itch.io**](https://srihk.itch.io/roughdrift)
+[**Download Slide on itch.io**](https://srihk.itch.io/slide)
 
 ## Mobile Screenshots
 
