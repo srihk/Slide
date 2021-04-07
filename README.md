@@ -1,6 +1,6 @@
 # **S\ide**
 
-Slide (stylized as **S\ide**) is a downloadable game for Android, Windows, and Linux. An endless runner... drifter game made using Unity3D.
+Slide (stylized as **S\ide**) is a downloadable game for Android, Windows, and Linux. An endless runner... slider game made using Unity3D.
 
 Red, an endangered cube and our protagonist, must drift his way through an army of disunited walls!
 
