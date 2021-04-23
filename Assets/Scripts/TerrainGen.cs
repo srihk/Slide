@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TerrainGen : MonoBehaviour {
+public class TerrainGen : MonoBehaviour
+{
     public int depth = 0;
     public int width = 256;
     public int height = 256;
@@ -20,7 +21,7 @@ public class TerrainGen : MonoBehaviour {
     }
     TerrainData GenerateTerrain(TerrainData data)
     {
-		data.heightmapResolution = height + 1;
+        data.heightmapResolution = height + 1;
         data.size = new Vector3(width, depth, height);
         data.SetHeights(0, 0, GenerateHeights());
         return data;
@@ -39,8 +40,8 @@ public class TerrainGen : MonoBehaviour {
     }
     float CalculateHeight(int x, int y)
     {
-        float xc = (float) x / width * scale + offsetx;
-        float yc = (float) y / height * scale + offsety;
+        float xc = (float)x / width * scale + offsetx;
+        float yc = (float)y / height * scale + offsety;
         return Mathf.PerlinNoise(xc, yc);
     }
 }
