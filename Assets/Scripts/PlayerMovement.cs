@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!PauseMenu.isGamePaused() && Time.timeScale < 2)
             Time.timeScale += speedup_factor * Time.deltaTime;
-        Debug.Log("TimeScale: " + Time.timeScale);
+        // Debug.Log("TimeScale: " + Time.timeScale);
     }
 
     void FixedUpdate()
