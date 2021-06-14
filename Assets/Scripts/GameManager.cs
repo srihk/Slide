@@ -49,8 +49,12 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("Tutorial").gameObject.SetActive(false);
             else if (PauseMenu.isGamePaused())
                 GameObject.Find("Pause").gameObject.SetActive(false);
-            else
+            else {
+                // If playing normally, play 'time slow' audio
+                GameObject.Find("Audio Source Time Slow").GetComponent<AudioSource>().Play();
+                
                 GameObject.Find("PauseButton").gameObject.SetActive(false);
+            }
             Invoke("showScoreCard", restartDelay);
         }
     }
