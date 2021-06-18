@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         GameObject.Find("Canvas").transform.Find("FPSCounter").gameObject.SetActive((PlayerPrefs.GetInt("showFPS", 1) == 1));
     }
 
+    public bool gameEnded()
+    {
+        return gameHasEnded;
+    }
+    
     public void showTutorial()
     {
         PauseMenu.showTutorial();
