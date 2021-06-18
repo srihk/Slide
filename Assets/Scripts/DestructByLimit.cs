@@ -26,9 +26,27 @@ public class DestructByLimit : MonoBehaviour
 
     void Update()
     {
-        if (!isPillar && gameManager.gameEnded())
+        if (!isPillar)
         {
-            gameObject.GetComponent<AudioSource>().Stop();
+            if (PauseMenu.isGamePaused())
+            {
+                if (gameObject.GetComponent<AudioSource>().isPlaying)
+                {
+                    gameObject.GetComponent<AudioSource>().Pause();
+                }
+            }
+            else
+            {
+                if (!gameObject.GetComponent<AudioSource>().isPlaying)
+                {
+                    gameObject.GetComponent<AudioSource>().UnPause();
+                }
+            }
+            
+            if (gameManager.gameEnded())
+            {
+                gameObject.GetComponent<AudioSource>().Stop();
+            }
         }
     }
 }
