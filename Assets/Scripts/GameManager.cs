@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("player");
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
         if (PlayerPrefs.GetInt("FirstPlay", 1) == 1)
         {
             PlayerPrefs.SetInt("FirstPlay", 0);
