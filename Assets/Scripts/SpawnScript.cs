@@ -12,19 +12,62 @@ public class SpawnScript : MonoBehaviour
     public float offset;
     public Quaternion rotation;
     public float x_offset = 1f;
+    public float initialAudioOffset = 1f;
+    private float audioOffset = 1f;
+    AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
         player = GameObject.Find("player");
-        Spawn();
+        StartCoroutine("Spawn");
+        StartCoroutine("PlayAudio");
     }
 
-    void Spawn()
+    IEnumerator FadeAudio(float duration = 1.54f)
     {
-        spawnPoint.z = player.transform.position.z + offset;
-        spawnPoint.x += x_offset;
-        x_offset = -x_offset;
-        Instantiate(spawnObj, spawnPoint, rotation);
-        Invoke("Spawn", Random.Range(spawnMin, spawnMax));
+        float currentTime = 0.0f;
+        float start = audioSource.volume;
+        
+        while (audioSource.volume > 0 && currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume -= start / duration * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield break;
+    }
+
+    IEnumerator PlayAudio()
+    {
+        audioSource = this.GetComponent<AudioSource>();
+
+
+        if (audioSource != null)
+        {
+            yield return new WaitForSeconds(Random.Range(0.0f, initialAudioOffset));
+
+            while (true)
+            {
+                audioSource.volume = 0.7f;
+                audioSource.Play();
+                StartCoroutine(FadeAudio());
+                yield return new WaitForSeconds(Random.Range(spawnMin + audioOffset, spawnMax + 2 * audioOffset));
+            }
+        }
+
+        yield break;
+    }
+
+    IEnumerator Spawn()
+    {
+        while (true)
+        {
+            spawnPoint.z = player.transform.position.z + offset;
+            spawnPoint.x += x_offset;
+            x_offset = -x_offset;
+            Instantiate(spawnObj, spawnPoint, rotation);
+            yield return new WaitForSeconds(Random.Range(spawnMin, spawnMax));
+        }
     }
 }

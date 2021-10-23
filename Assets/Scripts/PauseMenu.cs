@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    Slider sensitivitySlider;
+    Slider sensitivitySlider, volumeSlider;
     GameObject pauseMenuUI;
     static bool gamePaused = false;
     public static bool showingTutorial = false;
@@ -17,9 +17,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(true);
         GameObject.Find("PauseButton").gameObject.SetActive(false);
         GameObject.Find("showFPSToggle").GetComponent<Toggle>().isOn = (PlayerPrefs.GetInt("showFPS", 1) == 1);
-        GameObject.Find("soundToggle").GetComponent<Toggle>().isOn = (PlayerPrefs.GetInt("soundToggle", 1) == 1);
         sensitivitySlider = GameObject.Find("SensitivitySlider").GetComponent<Slider>();
+        volumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
         sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity", 0.6f);
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1.0f);
     }
 
     public void resumeGame()
@@ -66,6 +67,12 @@ public class PauseMenu : MonoBehaviour
     {
         PlayerMovement.setSensitivity(sensitivitySlider.value);
         PlayerPrefs.SetFloat("Sensitivity", PlayerMovement.getSensitivity());
+    }
+
+    public void onVolumeChanged()
+    {
+        AudioListener.volume = volumeSlider.value;
+        PlayerPrefs.SetFloat("Volume", AudioListener.volume);
     }
 
     public static void showScoreCard()
