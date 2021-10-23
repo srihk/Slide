@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.transform.Find("Pause").gameObject.SetActive(true);
         GameObject.Find("PauseButton").gameObject.SetActive(false);
         GameObject.Find("showFPSToggle").GetComponent<Toggle>().isOn = (PlayerPrefs.GetInt("showFPS", 1) == 1);
+        GameObject.Find("soundToggle").GetComponent<Toggle>().isOn = (PlayerPrefs.GetInt("soundToggle", 1) == 1);
         sensitivitySlider = GameObject.Find("SensitivitySlider").GetComponent<Slider>();
         sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity", 0.6f);
     }

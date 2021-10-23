@@ -39,6 +39,13 @@ public class GameManager : MonoBehaviour
         GameObject.Find("Canvas").transform.Find("FPSCounter").gameObject.SetActive(showFps);
     }
 
+    public void updateAudioToggle()
+    {
+        bool soundToggle = GameObject.Find("soundToggle").GetComponent<Toggle>().isOn;
+        PlayerPrefs.SetInt("soundToggle", soundToggle ? 1 : 0);
+        AudioListener.volume = soundToggle ? 1.0f : 0.0f;
+    }
+
     public void EndGame()
     {
         if (PlayerPrefs.GetFloat("HighScore", 0) < player.transform.position.z)
