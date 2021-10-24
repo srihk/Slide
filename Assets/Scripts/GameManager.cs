@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
             showTutorial();
         }
         GameObject.Find("Canvas").transform.Find("FPSCounter").gameObject.SetActive((PlayerPrefs.GetInt("showFPS", 1) == 1));
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1.0f);
     }
 
     public bool gameEnded()

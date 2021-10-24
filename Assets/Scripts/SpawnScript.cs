@@ -13,7 +13,7 @@ public class SpawnScript : MonoBehaviour
     public Quaternion rotation;
     public float x_offset = 1f;
     public float initialAudioOffset = 1f;
-    private float audioOffset = 1f;
+    private float audioOffset = 2f;
     AudioSource audioSource;
     // Use this for initialization
     void Start()
@@ -45,14 +45,14 @@ public class SpawnScript : MonoBehaviour
 
         if (audioSource != null)
         {
-            yield return new WaitForSeconds(Random.Range(0.0f, initialAudioOffset));
+            yield return new WaitForSeconds(initialAudioOffset);
 
             while (true)
             {
                 audioSource.volume = 0.7f;
                 audioSource.Play();
                 StartCoroutine(FadeAudio());
-                yield return new WaitForSeconds(Random.Range(spawnMin + audioOffset, spawnMax + 2 * audioOffset));
+                yield return new WaitForSeconds(Random.Range(spawnMin + audioOffset, spawnMax + audioOffset));
             }
         }
 
